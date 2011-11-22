@@ -1,0 +1,227 @@
+/**
+ *  Font size scheme:
+ *  10px = 1em. So a 24px font should be defined as 2.4em
+ */
+ 
+body {
+    background: #262626 -webkit-gradient(
+        radial, 85% 90%, 5, 85% 90%, 700, from(#4c4c4c), to(black)
+    );
+    color: white;
+    font-family: Helvetica, clean, sans-serif;
+    margin: 0 auto;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+a {  
+    color: white;
+    text-decoration: none;
+}
+a:hover {  
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.master {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+
+header {
+    margin: 0px;
+    display: -webkit-box;
+    max-height: 4.6em;
+    border: 1px solid #727272;
+    -webkit-box-flex: 0.11358025;
+    background: #505050 -webkit-gradient(
+        linear, 
+        0% 50%, 0% 100%, 
+        from(#1e1e1e), 
+        color-stop(0.01, black),
+        to(black)
+    );
+}
+    header .path {
+        -webkit-box-flex: 2;
+        overflow: hidden;
+    }
+        header .path .pathItem {
+            display: block;
+            float: left;
+            padding: 1.3em;
+            background: transparent url(images/bg-path-item@2x.png) left center no-repeat;
+            background-size: contain;
+            padding-left: 3.5em;
+        }
+            header .path .pathItem:first-child {
+                padding-left: 2em;
+                background-image: none;
+            }
+            header .path .pathItem:last-child {
+                background-image: url(images/bg-path-item-selected@2x.png);
+                background-size:  auto 100%;
+                min-width: 19em;
+            }
+            header .path .pathItem a {
+                font-size: 1.8em;
+            }
+    header .tools {
+        -webkit-box-flex: 1;
+    }
+        header .tools .prefs {
+            display: block;
+            float: right;
+            margin: 1em;
+            overflow: hidden;
+            width: 2.4em;
+            height: 2.4em;
+            text-indent: -9999px;
+            background-image: url(images/tools-icon@2x.png);
+            background-size: contain;
+            cursor: pointer;
+        }
+
+.main {
+    background-color: black;
+    -webkit-box-flex: 1;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    border: 1px solid #727272;
+    margin: 1em;
+}
+    .main section {
+        background: #111111;
+        margin: 1em;
+        margin-left: 0px;
+    }
+        .main section:first-child {
+            margin-left: 1em;
+        }
+    .main .details {
+        -webkit-box-flex: 1;
+        max-width: 35.7em;
+        max-height: 38.8em;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+        .main .details a {
+            display: inline-block;
+            background-color: #787878;
+            border-radius: 3px;
+            padding-left: 3px;
+            padding-right: 3px;
+            margin: 1px;
+        }
+            .main .details a:hover {
+                text-decoration: none;
+                background: #7f6db1;
+            }
+        .main .details .key-facts-heading {
+            font-size: 2.8em;
+            margin: 0;
+            margin-bottom: .5em;
+        }
+        .main .details li,
+        .main .details p {
+            font-size: 1.3em;
+            line-height: 1.5em;
+        }
+        .main .details h2 {
+            font-size: 1.4em;
+            margin-bottom: .5em;
+        }
+    .main .preview {
+        -webkit-box-flex: 2;
+        background: url(images/thor-trailer-poster-frame.png) left top no-repeat;
+        background-size: contain;
+        max-width: 62.4em;
+        max-height: 38.8em;
+        
+        /*
+        */
+    }
+
+footer {
+    border: 1px solid #727272;
+    margin: 1em;
+    margin-top: 0px;
+    -webkit-box-flex: 0.5037037;
+    display: -webkit-box;
+    max-height: 20.4em;
+    background: #505050 -webkit-gradient(
+        radial, 85% 75%, 5, 85% 75%, 320, from(#333333), to(black)
+    );
+}
+    footer ul,
+    footer li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    footer ul {
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+        -webkit-box-flex: 1;
+    }
+    footer li {
+        display: block;
+        -webkit-box-flex: 1;
+        width: 100%;
+        border-left: 1px solid #727272;
+        overflow: hidden;
+        background: #505050 -webkit-gradient(
+            radial, 50% 67%, 5, 1% 1%, 320, from(#333333), to(black)
+        );
+    }    
+        footer li:first-child {
+            border-left: 0px;
+        }
+    footer .module-heading {  
+        margin: 0;
+        padding: 1em;
+        padding-top: 0.4em;
+        padding-bottom: 0.4em;
+        letter-spacing: .15em;
+        font-weight: normal;
+    }
+        footer .module-heading.selected {  
+            background: #505050 -webkit-gradient(
+                linear, 
+                0% 0%, 100% 100%, 
+                from(#7f6db1), 
+                to(#0a0a0a)
+            );
+        }
+        footer .module-heading a {  
+            font-size: 1.8em;
+        }
+    footer .module-content {
+        padding: 1em;
+        padding-top: 0;
+    }
+    footer .module-image {
+        display: block;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: 50% 50%;
+        text-indent: -9999px;
+        /* width: 14.2em; */
+        height: 13.6em;
+    }
+        .module-image.preview {background-image: url(images/bg-module-preview.png);}
+        .module-image.pictures {background-image: url(images/bg-module-pictures.png);}
+        .module-image.videos {background-image: url(images/bg-module-videos.png);}
+        .module-image.tickets {background-image: url(images/bg-module-tickets.png);}
+        .module-image.wikipedia {background-image: url(images/bg-module-wikipedia.png);}
+    footer .module-caption {
+        padding-top: .5em;
+    }
+        footer .module-caption a {
+            font-size: 1.2em;
+        }
