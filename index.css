@@ -14,21 +14,6 @@ body {
     margin: 0 auto;
 }
 
-ul, li {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-a {  
-    color: white;
-    text-decoration: none;
-}
-a:hover {  
-    text-decoration: underline;
-    cursor: pointer;
-}
-
 .master {
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -37,6 +22,21 @@ a:hover {
     );
     color: white;
     font-family: Helvetica, clean, sans-serif;
+}
+
+.master ul, .master li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.master a {  
+    color: white;
+    text-decoration: none;
+}
+.master a:hover {  
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 
