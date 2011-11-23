@@ -2,13 +2,15 @@
  *  Font size scheme:
  *  10px = 1em. So a 24px font should be defined as 2.4em
  */
+
+.someParentContainer {
+    border: 10px solid gray;
+    width: 80%;
+    height: 400px;
+    overflow: hidden;
+}
  
 body {
-    background: #262626 -webkit-gradient(
-        radial, 85% 90%, 5, 85% 90%, 700, from(#4c4c4c), to(black)
-    );
-    color: white;
-    font-family: Helvetica, clean, sans-serif;
     margin: 0 auto;
 }
 
@@ -30,6 +32,11 @@ a:hover {
 .master {
     display: -webkit-box;
     -webkit-box-orient: vertical;
+    background: #262626 -webkit-gradient(
+        radial, 85% 90%, 5, 85% 90%, 700, from(#4c4c4c), to(black)
+    );
+    color: white;
+    font-family: Helvetica, clean, sans-serif;
 }
 
 
