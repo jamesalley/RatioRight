@@ -18,7 +18,7 @@ body {
 create comps with fixed aspect ratios. RatioRight preserves these ratios, regardless of how the 
 design is delivered. This is especially handy for full-screen designs.</p>
 
-<p>For instance, imagine you have a comp that's designed as 1024x692. RatioRight allows you to present that design at any scale while preserving the intended reference design ratios:</p>
+<p>For instance, imagine you have a comp that's designed as 1024x692. RatioRight allows you to present that design at any scale while preserving the intended reference design ratios. Look at the example below. It's not an image, nor an iframe, and it's not scaled using CSS transforms. It's HTML scaled automatically using RatioRight.</p>
 
 <div class="someParentContainer" style="width: 261px;height: 173px">
 <div class="master" id="master">
@@ -147,13 +147,18 @@ preserve the design while presenting it in portrait by adding whitespace below i
 </ul>
 
 <h2>Implementation</h2>
+<h3>Create Semantic Markup</h3>
+<p>Natch.</p>
 
+<h3>Write Flexible and/or EM-based CSS</h3>
 
-<h3>Creating compatible CSS</h3>
-<p>Do not use pixel dimensions within your design's CSS. Instead, use "em" for everything. This is pretty easy,
-because RatioRight uses a 10px base. As such, 10px = 1em. So if you have a box that is 220px wide in your reference design, make it 22.0em. If a font is specc'd at 14px, make it 1.4em. And so on.</p>
+<p>Since this is an adaptive design, start with a nominally flexible layout using percentages or flex-box. The examples shown are all -webkit-specific flex-box layouts, but there are other workable approaches. This gets you part way down the road.</p>
 
-<h3>Pluggin in RatioRight</h3>
+<p>Not everything needs to be flexible. Use "em" for everything that needs to have a "fixed" dimension (versus a flexible dimension). This is pretty easy, because RatioRight uses a 10px base. As such, 10px = 1em. So if you have a box that is 220px wide in your reference design, make it 22.0em. If a font is specc'd at 14px, make it 1.4em. And so on.</p>
+
+<p>In order for images to scale, implement them as background images of flexible or em-bound elements, or size them with EMs using CSS. Don't provide a width and height within the IMG tag.</p>
+
+<h3>Plugging in RatioRight</h3>
 <p>Make sure YUI3 and the RatioRight plugin are available. Then plug RatioRight into the node you 
 want to scale. Pass in the width and height of your reference design. Optionally, pass in the "locked" 
 parameter. It will lock your node to either landscape or portrait mode, regardless of device orientation or 
