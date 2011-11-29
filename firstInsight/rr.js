@@ -3,16 +3,19 @@ YUI().use('node','event', function (Y) {
         //e.preventDefault();
     };
     
-    // control dynamic font sizing.
-    // normally body is set to 10px; master container is set to 100%.
-    // so an element set to 2em gets sized at 20px, 1.5 em is 15px equivalent. Simple.
-    // but what we really want is dynamic font sizing, so that this works regardless of how we stretch the page.
-    // so I need to figure out a ratio between the target and the intended.
-    // in this case, the intended relationhip in the designs goes like this:
-    //      I have a 692px high design. My body is set to 10px by default. that's 1-to-69.2, or 0.01445087
-    //      In other words, the font size of the body, in pixels, should be 0.01445087 * the body height
-    // So here we go...
-    // Setting a ratio and adding relevant code to the _windowChange function
+    /**
+     *  Ratio-based content scaling to fit most devices
+     *
+     *  How it works:
+     *  We need to figure out a ratio between the actual browser env and the design.
+     *  In this case, the intended relationhip in the designs goes like this:
+     *  We have a 692px high design. 
+     *  Our master container is set to 10px per em by default.
+     *  That's 1-to-69.2, or 0.01445087
+     *  In other words, the font size of the master container, in pixels, 
+     *  should be 0.01445087 * the body height.
+     */
+
     var LANDSCAPE_FONT_SIZE_RATIO = 0.01445087;
         PORTRAIT_FONT_SIZE_RATIO = 0.01054852;
     
