@@ -35,6 +35,8 @@ YUI.add('ratioRight', function(Y) {
                 viewportHeight = winHeight,
                 targetWidth,
                 targetHeight;
+            Y.log('RatioRight: ' + viewportWidth + 'x' + viewportHeight);
+            //console.log(win);
 
             // If parent node is not BODY, use the dimensions of the parent instead of window.
             if (this.host.get('parentNode').get('tagName') != 'BODY') {
