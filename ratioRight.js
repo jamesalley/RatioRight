@@ -17,6 +17,7 @@ YUI.add('ratioRight', function(Y) {
             this.PORTRAIT_FONT_SIZE_RATIO = 1/(conf.referenceWidth/10);
             this.referenceOrientation = (conf.referenceWidth>conf.referenceHeight) ? 'landscape':'portrait';
             this.locked = conf.locked;
+            this.fixedHeight = conf.fixedHeight;
             
             Y.on(this.WINDOW_CHANGE_EVENT,this._windowChange, Y.config.win, this);
             this.host.get('parentNode').setStyle('font-size','10px');
@@ -66,7 +67,7 @@ YUI.add('ratioRight', function(Y) {
                 }
             }
             // applies to all other cases
-            else {
+            else if (this.fixedHeight) {
                 this.host.setStyle('height',viewportHeight);
             }
             // applies to all cases
