@@ -17,7 +17,7 @@ YUI.add('ratioRight', function(Y) {
             this.PORTRAIT_FONT_SIZE_RATIO = 1/(conf.referenceWidth/10);
             this.referenceOrientation = (conf.referenceWidth>conf.referenceHeight) ? 'landscape':'portrait';
             this.locked = conf.locked;
-            this.fixedHeight = conf.fixedHeight;
+            this.fixedHeight = (conf.fixedHeight) ? conf.fixedHeight : true;
             
             Y.on(this.WINDOW_CHANGE_EVENT,this._windowChange, Y.config.win, this);
             this.host.get('parentNode').setStyle('font-size','10px');
@@ -51,6 +51,7 @@ YUI.add('ratioRight', function(Y) {
             // If design's aspect ratio is locked regardless of device orientation
             if (this.locked && calculatedOrientation != this.referenceOrientation) {
                 if (calculatedOrientation === 'portrait') {
+                    Y.log('locked landscape inside portrait container');
                     // Locked, landscape reference design in a portait window; thus limit the height.
                     // Solve for the height that matches the design reference ratio
                     targetHeight = parseInt(viewportWidth*this.conf.referenceHeight/this.conf.referenceWidth);
@@ -58,6 +59,7 @@ YUI.add('ratioRight', function(Y) {
                     this.host.setStyle('height',targetHeight);
                     this.host.setStyle('width','');
                 } else {
+                    Y.log('locked portrait inside landscape container');
                     // Locked, portrait reference design in a landscape window; thus limit the width.
                     // Solve for the width that matches the design reference ratio
                     targetWidth = parseInt(viewportHeight*this.conf.referenceWidth/this.conf.referenceHeight);
@@ -68,7 +70,11 @@ YUI.add('ratioRight', function(Y) {
             }
             // applies to all other cases
             else if (this.fixedHeight) {
+                Y.log('has fixed height');
                 this.host.setStyle('height',viewportHeight);
+            }
+            else {
+                Y.log('all other cases');
             }
             // applies to all cases
             this.host.setStyle('font-size',fontSize+'px');
