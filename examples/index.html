@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+    <title>RatioRight</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+<style type="text/css">
+body {
+    margin: 10px;
+}
+</style>
+</head>
+<body>
+
+
+<h1>Ratio Right</h1>
+
+
+<p>On the Web, we never know what exact client dimensions we'll run into. But designers always 
+create comps with fixed aspect ratios. RatioRight preserves these ratios, regardless of how the 
+design is delivered. This is especially handy for full-screen designs.</p>
+
+<p>For instance, imagine you have a comp that's designed as 1024x692. RatioRight allows you to present that design at any scale while preserving the intended reference design ratios. Look at the example below. It's not an image, nor an iframe, and it's not scaled using CSS transforms. It's HTML scaled automatically using RatioRight.</p>
+
+<div class="someParentContainer" style="width: 261px;height: 173px">
+<div class="master" id="master">
+
+<header>
+    <nav class="path">
+        <span class="pathItem"><a href="#">Ipsum</a></span>
+        <span class="pathItem"><a href="#">Lovum</a></span>
+        <span class="pathItem"><a href="#">Factum</a></span>
+    </nav>
+    <section class="tools">
+        <span class="prefs">Preferences</span>
+    </section>
+</header>
+
+<section class="main">
+    <section class="details">
+        <h1 class="key-facts-heading">Loki</h1>
+        <ul class="key-facts-list">
+            <li>2011</li>
+            <li>PG-13</li>
+            <li>2hr 10min</li>
+            <li>Action/Adventure</li>
+        </ul>
+                
+        <!--        
+        -->
+    </section>
+    <section class="preview">
+        preview
+    </section>
+</section>
+
+<footer>
+    <ul>
+        <li>
+            <h3 class="module-heading selected"><a href="#">Anu</a></h3>
+            <div class="module-content">
+                <div class="module-image preview">
+                    Anu
+                </div>
+                <div class="module-caption">
+                    <a href="#"><b>Loki</b> - parsonit forut</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <h3 class="module-heading"><a href="#">Ipsum</a></h3>
+            <div class="module-content">
+                <div class="module-image pictures">
+                    Ipsum
+                </div>
+                <div class="module-caption">
+                </div>
+            </div>
+        </li>
+        <li><h3 class="module-heading"><a href="#">Lovum</a></h3>
+            <div class="module-content">
+                <div class="module-image videos">
+                    Lovum
+                </div>
+                <div class="module-caption">
+                </div>
+            </div>
+        </li>
+        <li>
+            <h3 class="module-heading"><a href="#">Foobar</a></h3>
+            <div class="module-content">
+                <div class="module-image tickets">
+                    Foobar
+                </div>
+                <div class="module-caption">
+                    <a href="#">Foobartastic</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <h3 class="module-heading"><a href="#">Istilah</a></h3>
+            <div class="module-content">
+                <div class="module-image wikipedia">
+                    Istilah
+                </div>
+                <div class="module-caption">
+                    <a href="#"><b>Loki</b> sukanas</a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <h3 class="module-heading"><a href="#">Anastis</a></h3>
+            <div class="module-content">
+                <div class="module-image related">
+                    Anastis
+                </div>
+                <div class="module-caption">
+
+                </div>
+            </div>
+        </li>
+    </ul>
+</footer>
+
+</div>
+</div>
+
+<h2>Use Cases</h2>
+<p>Ratio Right is best used to help designs scale between similarly, but not identically sized, devices. 
+The use case I had in mind was getting a full-screen design to fit on tablets, which have roughly the same dimensions, but which are not not exactly the same. Even an iPad can have more or less room depending on whether or not the 
+bookmarks bar or tabs are showing.
+</p>
+
+<p>RatioRight helps you to fit a given design, with correct ratios, into a given 
+container or viewport, but it can't work miracles. If you have a landscape reference design, you can even
+preserve the design while presenting it in portrait by adding whitespace below it. </p>
+
+<h2>More Examples</h2>
+
+<p>Try these examples, resizing your window or changing device orientation to see how they adapt.
+</p>
+
+<ul>
+    <li><a href="fullscreen.html">Fullscreen</a></li>
+    <li><a href="fullscreen_locked.html">Fullscreen, locked to landscape orientation</a></li>
+    <li><a href="container_bound.html">Container-bound</a></li>
+    <li><a href="container_bound_locked.html">Container-bound, locked to landscape orientation</a></li>
+    <li><a href="portrait_locked.html">Portrait design</a> (I don't have a portrait design handy, so you'll have to use your imagination a bit here.)</li>
+</ul>
+
+<h2>Implementation</h2>
+<h3>Create Semantic Markup</h3>
+<p>Natch.</p>
+
+<h3>Write Flexible and/or EM-based CSS</h3>
+
+<p>Since this is an adaptive design, start with a nominally flexible layout using percentages or flex-box. The examples shown are all -webkit-specific flex-box layouts, but there are other workable approaches. This gets you part way down the road.</p>
+
+<p>Not everything needs to be flexible. Use "em" for everything that needs to have a "fixed" dimension (versus a flexible dimension). This is pretty easy, because RatioRight uses a 10px base. As such, 10px = 1em. So if you have a box that is 220px wide in your reference design, make it 22.0em. If a font is specc'd at 14px, make it 1.4em. And so on.</p>
+
+<p>In order for images to scale, implement them as background images of flexible or em-bound elements, or size them with EMs using CSS. Don't provide a width and height within the IMG tag.</p>
+
+<h3>Plugging in RatioRight</h3>
+<p>Make sure YUI3 and the RatioRight plugin are available. Then plug RatioRight into the node you 
+want to scale. Pass in the width and height of your reference design. Optionally, pass in the "locked" 
+parameter. It will lock your node to either landscape or portrait mode, regardless of device orientation or 
+the viewport.</p>
+
+<pre>
+&lt;script src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"&gt;&lt;/script&gt;
+&lt;script src="ratioRight.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+YUI().use('ratioRight', function (Y) {
+    
+    Y.one('#master').plug(Y.RatioRightPlugin,{
+        'referenceWidth': 1024,
+        'referenceHeight': 692,
+        'locked': true
+    });
+
+});
+&lt;/script&gt;
+</pre>
+
+
+<script src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script>
+<script src="../src/ratioRight.js"></script>
+<script>
+YUI().use('ratioRight', function (Y) {
+    
+    Y.one('#master').plug(Y.RatioRightPlugin,{
+        'referenceWidth': 1024,
+        'referenceHeight': 692,
+        'locked': true
+    });
+
+});
+</script>
+</body>
+</html>
